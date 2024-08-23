@@ -1,4 +1,4 @@
-@extends('navbar')
+@extends('atas')
 
 @section('content')
 <head>
@@ -14,10 +14,12 @@
             border-radius: 10px;
             background-color: #ffffff;
             margin: auto; /* Center the container */
+            margin-top: 260px;
         }
         .login-title {
             font-size: 1.5rem;
             margin-bottom: 20px;
+            font-family: "havana";
         }
         .form-control {
             margin-bottom: 15px;
@@ -31,38 +33,46 @@
             color: #000000;
         }
         .btn-login {
-            width: 100%;
+            height: 10%;
             background-color: #007bff;
             border-color: #007bff;
+            width: 30%;
+            margin-top:40px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
     </style>
+</head>
+
+<body>
+    <div class="container my-4">
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-    <div class="container my-4">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="login-container">
                     <form action="{{ route('login.proses') }}" method="POST">
                         @csrf
-                        <center><h2 class="login-title">Login</h2></center>
+                        <center><h2 class="login-title fs-3">Welcome to my workplace!</h2></center>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                            <label for="email" class="form-label fs-5">Email</label>
+                            <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
                             @error('email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label fs-5">Password</label>
                             <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                             @error('password')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary btn-login btn-sm">Login</button>
+                        <button type="submit" class="btn btn-primary btn-login btn-sm fs-5">Login</button>
                     </form>
                 </div>
             </div>
@@ -71,4 +81,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
 @endsection
