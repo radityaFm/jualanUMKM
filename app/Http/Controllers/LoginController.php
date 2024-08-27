@@ -15,28 +15,27 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        // Validate the request input
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string', 'min:6', 'max:21'],
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-    
-        $user = User::where('email', $request->email)->first();
-    
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Login pengguna
-            Auth::login($user);
-            return redirect()->route('home');
-        } else {
-            return redirect()->route('login')->with('error', 'Email atau password salah');
-        }
+{
+    // Validate the request input
+    $validator = Validator::make($request->all(), [
+        'email' => ['required', 'string', 'email'],
+        'password' => ['required', 'string', 'min:6', 'max:21'],
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
-    
+
+    $user = User::where('email', $request->email)->first();
+
+    if ($user && Hash::check($request->password, $user->password)) {
+        // Login pengguna
+        Auth::login($user);
+        return redirect()->route('dashboard');
+    } else {
+        return redirect()->route('login')->with('error', 'Email atau password salah');
+    }
+}
 public function registrasi(){
     return view('registrasi');
 }

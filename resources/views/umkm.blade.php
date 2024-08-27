@@ -288,6 +288,7 @@
         background-color: #343a40;
         color: white;
         padding: 40px 0;
+        overflow-y:hidden;
       }
 
       .footer a {

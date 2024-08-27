@@ -1,4 +1,4 @@
-@extends('atas')
+@extends('navbar')
 
 @section('content')
 <style>
@@ -39,34 +39,39 @@
                 <div class="row pt-1">
                 <form action=" {{ route('profil.update') }} " method="POST">
                  @csrf
-                 @method('POST')
+                 @method('PUT')
                   <div class="col-6 mb-3">
                     <h6>Email</h6>
-                    <p class="text-muted">
-                    @if($user)
+                    <input class="text-muted"  placeholder="masukan email baru baru" id="email" value="{{ old('name') }}" >
+                    <!-- @if($user)
                       {{ $user->email }}
                     @else 
                       <p>null</p>
-                    @endif 
-                    </p>
+                    @endif  -->
+                    </input>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Name</h6>
-                    <p class="text-muted">
-                    @if($user)
+                    <input class="text-muted"  placeholder="masukan nama baru" id="name"value="{{ old('email') }}">
+                    <!-- @if($user)
                       {{ $user->name }}
                     @else
                       <p>null</p> 
-                    @endif
-                    </p>
+                    @endif -->
+                    </input>
                   </div>
+                  <button href="{{ route('profil.update') }}" class="btn btn-success" type="submit">simpan</button>
+                  <button href="{{ route('profil.edit') }}" class="btn btn-success" type="submit">kembali</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="d-flex justify-content-end">
-            <a href="{{ route('logout') }}" type="submit" class="btn btn-danger">Logout</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
         </div>
 
       </div>

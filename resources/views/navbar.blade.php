@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
   <title>aurora</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -42,14 +42,45 @@
         --bs-nav-pills-link-active-color: lime;
         --bs-nav-pills-link-active-bg: rgb(0, 0, 0, 0.7);
       }
+        .nav-pills-link:active{
+          color: lime;
+          background-color: #2e2e2e;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
       .nav-item {
         font-size: 15px;
       }
+      .dropdown-menu {
+    min-width: 240px;
+    margin-top: 10px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Ensure bold font weight and white background for dropdown items */
+.dropdown-item {
+    font-weight: bold;
+    background-color: white;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Add hover effect */
+.dropdown-menu:hover {
+    background-color:white;
+    color: #000; /* Black text color on hover */
+    cursor: pointer;
+}
+
+/* Ensure active state has the same hover effect */
+.dropdown-item:active {
+   background-color: #ffff;
+    color: #000; /* Black text color */
+    cursor: pointer;
+}
 </style>
 <body>
 <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
       <div class="container-fluid">
-        <img src="image/logo.png" alt="" />
+        <img src="assets/logo.png" alt="" />
         <button
           class="navbar-toggler background-color:white;"
           type="button"
@@ -83,6 +114,10 @@
         </div>
       </div>
     </nav>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</nav>
   @yield('content')
 </body>
 </html>

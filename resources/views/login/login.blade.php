@@ -3,23 +3,37 @@
 @section('content')
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        body {
+            background-image: url('assets/japon.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-y:hidden;
+            width: 100%;
+        }
         .login-container {
             padding: 48px;
             max-width: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
             border-radius: 10px;
-            background-color: #ffffff;
-            margin: auto; /* Center the container */
-            margin-top: 260px;
+            background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
+            margin: 0;
+            margin-top: 230px;
+            font-family: havana;
+            font-size: 20px;
         }
         .login-title {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            font-family: "havana";
+            font-family:roboto;
         }
         .form-control {
             margin-bottom: 15px;
@@ -33,53 +47,99 @@
             color: #000000;
         }
         .btn-login {
-            height: 10%;
-            background-color: #007bff;
-            border-color: #007bff;
-            width: 30%;
-            margin-top:40px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+            width: 25%;
+            height: 20%;
+            background-color: #5B99C2; /* Gray color */
+            border-radius: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .btn-login:hover {
+            background-color: #1A4870; /* Darker gray on hover */
+            color:white;
+        }
+        @media (max-width:1024px) {
+            .login-container {
+                padding: 48px;
+                max-width: auto;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
+                border-radius: 10px;
+                background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
+                margin: 0;
+                margin-top: 150px;
+                font-family: havana;
+                font-size: 20px;
+            }
+            body {
+                background-image: url('assets/japon.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                overflow-y:hidden;
+                width: 100%;
+            }
         }
     </style>
-</head>
-
-<body>
-    <div class="container my-4">
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="login-container">
-                    <form action="{{ route('login.proses') }}" method="POST">
-                        @csrf
-                        <center><h2 class="login-title fs-3">Welcome to my workplace!</h2></center>
-                        <div class="mb-3">
-                            <label for="email" class="form-label fs-5">Email</label>
-                            <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
-                            @error('email')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label fs-5">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-                            @error('password')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-login btn-sm fs-5">Login</button>
-                    </form>
-                </div>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="login-container">
+                <form action="{{ route('login.proses') }}" method="POST" onsubmit="return validatePassword()">
+                    @csrf
+                    <center><h2 class="login-title fs-3">Welcome to my Workplace!</h2></center>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fs-4">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                        @error('email')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label fs-4">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                        @error('password')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <input type="checkbox" onclick="showHide()" class="my-2"> Tampilkan Password
+                    <div class="">
+                        <button type="submit" class="btn btn-primary btn-login btn-sm">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function showHide() {
+        var inputan = document.getElementById("password");
+        if (inputan.type === "password") {
+            inputan.type = "text";
+        } else {
+            inputan.type = "password";
+        }
+    }
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+
+        if (password.length > 5) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Password Salah',
+                text: 'Periksa kembali password yang anda masukkan.',
+                confirmButtonText: 'OK'
+            });
+            return false; // Mencegah form submit jika password salah
+        }
+
+        return true; // Jika password valid, izinkan form submit
+    }
+</script>
 @endsection
