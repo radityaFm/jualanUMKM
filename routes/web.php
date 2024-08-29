@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', [LoginController::class, 'login'])->name('dashboard');
+
 // profil //
 
 // Route to show the profile
@@ -33,6 +33,8 @@ Route::put('/editprofil', [ProfilController::class, 'update'])
 // This rute might need a different method, like store or update, instead of show
 Route::post('/editprofil', [ProfilController::class, 'store'])
     ->name('profil.store');
+
+    Route::get('/umkm', [LoginController::class, 'showUmkm'])->name('umkm');
 
     Route::middleware('web')->group(function () {
         // Route for displaying the login page

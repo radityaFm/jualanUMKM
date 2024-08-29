@@ -38,25 +38,27 @@
         .form-control {
             margin-bottom: 15px;
         }   
-        .forgot-password a {
-            text-decoration: none;
-            color: #000000;
+        .forgot-password a:hover {
+            text-decoration: underline;
         }
-        .forgot-password {
-            text-decoration: none;
-            color: #000000;
-        }
-        .btn-login {
-            width: 25%;
-            height: 20%;
-            background-color: #5B99C2; /* Gray color */
+        .btn-login, .btn-register {
+            width: 55%;
+            height: 40px; /* Setting the height for both buttons */
+            background-color: #5B99C2; /* Button color */
             border-radius: 10px;
             justify-content: center;
             margin-top: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            line-height: 1.8;
         }
-        .btn-login:hover {
-            background-color: #1A4870; /* Darker gray on hover */
+        .btn-login:hover, .btn-register:hover {
+            background-color: #1A4870; /* Darker color on hover */
             color:white;
+        }
+        .text-muted {
+            color: #6c757d;
         }
         @media (max-width:1024px) {
             .login-container {
@@ -84,6 +86,7 @@
             }
         }
     </style>
+</head>
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
@@ -106,8 +109,10 @@
                         @enderror
                     </div>
                     <input type="checkbox" onclick="showHide()" class="my-2"> Tampilkan Password
-                    <div class="">
+                    <div class="login my-auto text-center">
                         <button type="submit" class="btn btn-primary btn-login btn-sm">Login</button>
+                        <p class="text-muted mt-3">Already have an account?</p>
+                        <a href="{{ route('registrasi') }}" class="btn btn-primary btn-register mt-2">Registrasi</a>
                     </div>
                 </form>
             </div>
@@ -129,17 +134,17 @@
     function validatePassword() {
         var password = document.getElementById("password").value;
 
-        if (password.length > 5) {
+        if (password.length < 6) {
             Swal.fire({
                 icon: 'error',
                 title: 'Password Salah',
                 text: 'Periksa kembali password yang anda masukkan.',
                 confirmButtonText: 'OK'
             });
-            return false; // Mencegah form submit jika password salah
+            return false; // Prevent form submission if the password is incorrect
         }
 
-        return true; // Jika password valid, izinkan form submit
+        return true; // Allow form submission if the password is valid
     }
 </script>
 @endsection

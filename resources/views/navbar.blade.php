@@ -3,121 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-  <title>aurora</title>
+  <title>umkm</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <style>
-     .navbar {
-        background-color: rgba(0, 0, 0, 0.5);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        display: flex;
-      }
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+    }
 
-      .nav-link {
-        display: inline-block;
-        margin: 20px;
-        position: relative;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        font-family: Comic Sans MS;
-      }
-      .nav-pills .nav-link:active {
-        background-color: black;
-        color: lime;
-      }
-      .nav-link:hover,
-      .nav-link:active {
-        color: lime;
-        background-color: rgb(0, 0, 0, 0.7);
-      }
-      .nav-pills:hover,
-      .nav-link:active {
-        color: lime;
-      }
-      .nav-pills {
-        --bs-nav-pills-border-radius: var(--bs-border-radius);
-        --bs-nav-pills-link-active-color: lime;
-        --bs-nav-pills-link-active-bg: rgb(0, 0, 0, 0.7);
-      }
-        .nav-pills-link:active{
-          color: lime;
-          background-color: #2e2e2e;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-        }
-      .nav-item {
-        font-size: 15px;
-      }
-      .dropdown-menu {
-    min-width: 240px;
-    margin-top: 10px;
-    background-color: rgba(128, 128, 128, 0.1);
-}
+    .navbar .nav-link,
+    .navbar .nav-link.active {
+      display: inline-block;
+      margin: 20px;
+      position: relative;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      font-family: Comic Sans MS;
+    }
 
-/* Ensure bold font weight and white background for dropdown items */
-.dropdown-item {
-    font-weight: bold;
-    background-color: white;
-    background-color: rgba(128, 128, 128, 0.1);
-}
+    .nav-pills .nav-link:active {
+      background-color: black;
+      color: lime;
+    }
 
-/* Add hover effect */
-.dropdown-menu:hover {
-    background-color:white;
-    color: #000; /* Black text color on hover */
-    cursor: pointer;
-}
+    .nav-link:hover,
+    .nav-link:active {
+      color: lime;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
 
-/* Ensure active state has the same hover effect */
-.dropdown-item:active {
-   background-color: #ffff;
-    color: #000; /* Black text color */
-    cursor: pointer;
-}
-</style>
+    .nav-pills:hover,
+    .nav-link:active {
+      color: lime;
+    }
+
+    .nav-pills {
+      --bs-nav-pills-border-radius: var(--bs-border-radius);
+      --bs-nav-pills-link-active-color: lime;
+      --bs-nav-pills-link-active-bg: rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-pills-link:active {
+      color: lime;
+      background-color: #2e2e2e;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-item {
+      font-size: 15px;
+    }
+
+    .dropdown-menu {
+      min-width: 240px;
+      margin-top: 10px;
+      background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .dropdown-item {
+      font-weight: bold;
+      background-color: white;
+      background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .dropdown-menu:hover {
+      background-color: white;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .dropdown-item:active {
+      background-color: #ffff;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .hamburger-icon {
+      display: inline-block;
+      cursor: pointer;
+      width: 30px;
+      height: 21px;
+      position: relative;
+      margin-right: 10px;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      background-color: white;
+      height: 3px;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 8px;
+      position: relative;
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: -8px;
+      position: relative;
+    }
+  </style>
+</head>
 <body>
-<nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
-      <div class="container-fluid">
-        <img src="assets/logo.png" alt="" />
-        <button
-          class="navbar-toggler background-color:white;"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          style="justify-content: center; text-align: center"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto fw-bold nav-pills">
-            <li class="nav-item">
-              <a class="nav-link fs-5 text-light" id="navbarNav" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fs-5 text-light" id="navbarNav" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fs-5 text-light" id="navbarNav" href="#product">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fs-5 text-light" id="navbarNav" href="#faq">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fs-5 text-light" id="navbarNav" href="#testimoni">Testimonial</a>
-            </li>
-          </ul>
-        </div>
+  <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" alt="Logo" />
+      </a>
+      <div class="hamburger-icon" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    </nav>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fw-bold nav-pills">
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-light" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-light" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-light" href="#product">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-light" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-light" href="#testimoni">Testimonial</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-</nav>
+  <script>
+    // JavaScript for hamburger menu toggle
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navbarNav').classList.toggle('show');
+    });
+  </script>
+  
   @yield('content')
+
 </body>
 </html>
