@@ -592,7 +592,7 @@
   <body>
     <div data-bs-spy="scroll" data-bs-target="#navbar-example" data-offset="40" data-bs-smooth-scroll="true">
     
-      <div class="parallax my-2">
+      <div class="parallax my-2" id="parallax">
         <div class="row d-flex align-items-center justify-content-center" style="height: 100vh;">
           <div class="col-lg-6 justify-content-center text-center my-5">
             <p class="fs-2" style=" background-color: rgba(222, 226, 230, 0.6); font-family:monospace; font-weight: 900; opacity: 60px; margin: 0px 50px 0px; border-radius: 10px;box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); font-size: large;">"Segarkan harimu dengan lezatnya Susu Jeli dan Yogurt, kenikmatan ganda dalam setiap gigitan dan tegukan!"</p>
@@ -922,20 +922,27 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6 footer-about">
             <a href="index.html" class="logo d-flex align-items-center fs-3" style="text-decoration: none; color: white">
-              <span class="sitename">QuickStart</span>
+              <span class="sitename fs-1">QuickStart</span>
             </a>
-
             <div class="footer-contact pt-3">
-              <p>Jalan Jangli krajan barat III</p>
-              <p>Semarang, 50274</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+62 000-000-000</span></p>
-              <p><strong>Email:</strong> <span>@gmai.com</span></p>
-            </div>
+              <p class="mb-1 fs-5"><strong>Phone:</strong> <span>+62 000-000-000</span></p>
+              <p class="mb-1 fs-5"><strong>Email:</strong> <span>@gmai.com</span></p>
+              <p class="mb-1 fs-5"> Lets find out!</p>
+              
+          </div>
             <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+              <a href=""><i class="bi bi-twitter-x">
+                <img src="" alt="">
+              </i></a>
+              <a href=""><i class="bi bi-facebook">
+                <img src="" alt="">
+              </i></a>
+              <a href=""><i class="bi bi-instagram">
+                <img src="" alt="">
+              </i></a>
+              <a href=""><i class="bi bi-linkedin">
+                <img src="" alt="">
+              </i></a>
             </div>
           </div>
 
@@ -943,15 +950,19 @@
 
           <div class="col-lg-2 col-md-3 footer-links"></div>
 
-          <div class="col-lg-4 col-md-12 footer-newsletter my-auto">
-            <iframe
-              class="map"
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8766.925079314353!2d110.41350367545591!3d-7.027570053745184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnNDQuOCJTIDExMMKwMjUnMzkuOCJF!5e1!3m2!1sen!2sid!4v1721807800851!5m2!1sen!2sid"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          <div class="col-lg-4 col-md-12 footer-newsletter my-auto mx-auto d-flex flex-column align-items-left">
+    <iframe
+      class="map"
+      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8766.925079314353!2d110.41350367545591!3d-7.027570053745184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnNDQuOCJTIDExMMKwMjUnMzkuOCJF!5e1!3m2!1sen!2sid!4v1721807800851!5m2!1sen!2sid"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      style="width: 100%; height: 190px; border: 0; margin-top:30px;"
+    ></iframe>
+    <p class="my-2 fs-5 fw-600 mt-3">Jalan Jangli Krajan Barat III</p>
+    <p class="mb-5 fs-5 fw-600">Semarang, 50274</p>
+</div>
+
         </div>
       </div>
       <div class="container copyright text-center mt-4">

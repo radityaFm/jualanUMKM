@@ -57,31 +57,32 @@
     .nav-item {
       font-size: 15px;
     }
-
     .dropdown-menu {
-      min-width: 240px;
-      margin-top: 10px;
-      background-color: rgba(128, 128, 128, 0.1);
-    }
+    min-width: 240px;
+    margin-top: 10px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
 
-    .dropdown-item {
-      font-weight: bold;
-      background-color: white;
-      background-color: rgba(128, 128, 128, 0.1);
-    }
+/* Ensure bold font weight and white background for dropdown items */
+.dropdown-item {
+    font-weight: bold;
+    background-color: white;
+    background-color: rgba(128, 128, 128, 0.1);
+}
 
-    .dropdown-menu:hover {
-      background-color: white;
-      color: #000;
-      cursor: pointer;
-    }
+/* Add hover effect */
+.dropdown-menu:hover {
+    background-color:white;
+    color: #000; /* Black text color on hover */
+    cursor: pointer;
+}
 
-    .dropdown-item:active {
-      background-color: #ffff;
-      color: #000;
-      cursor: pointer;
-    }
-
+/* Ensure active state has the same hover effect */
+.dropdown-item:active {
+   background-color: #ffff;
+    color: #000; /* Black text color */
+    cursor: pointer;
+}
     .hamburger-icon {
       display: inline-block;
       cursor: pointer;
@@ -117,20 +118,22 @@
   </style>
 </head>
 <body>
-  <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
+<nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="">
         <img src="assets/logo.png" alt="Logo" />
       </a>
-      <div class="hamburger-icon" id="hamburger">
+      <!-- Hamburger Icon (Visible on mobile and tablet only) -->
+      <div class="hamburger-icon d-lg-none" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
+      <!-- Navbar Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto fw-bold nav-pills">
           <li class="nav-item">
-            <a class="nav-link fs-5 text-light" href="#home">Home</a>
+            <a class="nav-link fs-5 text-light" href="#parallax">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fs-5 text-light" href="#about">About</a>
@@ -144,11 +147,41 @@
           <li class="nav-item">
             <a class="nav-link fs-5 text-light" href="#testimoni">Testimonial</a>
           </li>
+          <!-- Settings Dropdown -->
+           <div class="dropdown">
+           <li class="nav-item dropdown">
+            <a class="nav-link fs-5 text-light dropdown-toggle" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Settings
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown" style="min-width: 200px; margin-top: 10px;">
+              <li><a class="dropdown-item my-3 w-100 fw-bold" href="{{ route('profil') }}">View Profile</a></li>
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+              <li><a class="dropdown-item my-3 w-100 fw-bold" href="#">Customer Service</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item my-3 w-100 fw-bold" href="#">Logout</a></li>
+            </ul>
+          </li>
+           </div>
         </ul>
-      </div>
+      </div>    
+
     </div>
   </nav>
-
   <script>
     // JavaScript for hamburger menu toggle
     document.getElementById('hamburger').addEventListener('click', function() {
@@ -158,6 +191,6 @@
   </script>
   
   @yield('content')
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
