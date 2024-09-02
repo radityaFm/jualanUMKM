@@ -65,10 +65,10 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-content-end">
-            <a href="{{ route('logout') }}" type="submit" class="btn btn-danger">Logout</a>
-        </div>
-
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="dropdown-item w-100 fw-bold py-2" style="background: none; border: none; color: inherit;">Logout</button>
+              </form>
       </div>
     </div>
   </div>

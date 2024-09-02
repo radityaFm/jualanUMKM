@@ -148,38 +148,24 @@
             <a class="nav-link fs-5 text-light" href="#testimoni">Testimonial</a>
           </li>
           <!-- Settings Dropdown -->
-           <div class="dropdown">
-           <li class="nav-item dropdown">
-            <a class="nav-link fs-5 text-light dropdown-toggle" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Settings
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown" style="min-width: 200px; margin-top: 10px;">
-              <li><a class="dropdown-item my-3 w-100 fw-bold" href="{{ route('profil') }}">View Profile</a></li>
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-              <li><a class="dropdown-item my-3 w-100 fw-bold" href="#">Customer Service</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item my-3 w-100 fw-bold" href="#">Logout</a></li>
-            </ul>
-          </li>
-           </div>
+          <div class="dropdown">
+    <li class="nav-item dropdown">
+        <a class="nav-link fs-5 text-light dropdown-toggle" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown" style="min-width: 200px; margin-top: 10px;">
+            <li><a class="dropdown-item w-100 fw-bold py-2" href="{{ route('profil') }}">View Profile</a></li>
+            <li><a class="dropdown-item w-100 fw-bold py-2" href="#">Customer Service</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="dropdown-item w-100 fw-bold py-2" style="background: none; border: none; color: inherit;">Logout</button>
+                </form>
+            </li>
         </ul>
-      </div>    
-
+    </li>
+</div>
     </div>
   </nav>
   <script>

@@ -99,20 +99,6 @@
         <div class="d-flex align-items-center">
             <img src="assets/logo.png" alt="Logo" style="height: 90px; width: 90px;" class="me-2">
         </div>
-        <!-- Right-aligned profile text and image, centered vertically -->
-        <div class="d-flex align-items-center">
-    <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="navbar-text font-light me-3 text-white fs-5">Profil</span>
-            <img src="{{ asset('path_to_profile_image.jpg') }}" alt="Profile" class="img-thumbnail rounded-circle" style="height: 40px; width: 40px;">
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown" style="min-width: 200px; margin-top: 10px;">
-            <li><a class="dropdown-item my-3 w-100 fw-bold" href="{{ route('profil') }}">View Profile</a></li>
-            <li><a class="dropdown-item my-3 w-100 fw-bold" href="">Customer Service</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item my-3 w-100 fw-bold" href="">Logout</a></li>
-        </ul>
-    </div>
 </div>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

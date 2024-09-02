@@ -1,5 +1,8 @@
-@extends('atas')
-@section('content')
+@extends('sidebar')
+
+@section('title', 'Dashboard')
+
+@section('admin')
     <div class="wrapper">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -21,8 +24,9 @@
         </div>
     </div>
 @endsection
+
 <style>
-    .card-body p{
+    .card-body p {
         font-size: 12px;
     }
 </style>

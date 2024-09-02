@@ -1,5 +1,4 @@
-@extends('atas')
-
+@extends('navtop')
 @section('content')
 <head>
     <meta charset="UTF-8">
@@ -7,89 +6,98 @@
     <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        body {
-            background-image: url('assets/japon.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            overflow-y:hidden;
-            width: 100%;
-        }
-        .login-container {
-            padding: 48px;
-            max-width: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
-            margin: 0;
-            margin-top: 230px;
-            font-family: havana;
-            font-size: 20px;
-        }
-        .login-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-family:roboto;
-        }
-        .form-control {
-            margin-bottom: 15px;
-        }   
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-        .btn-login, .btn-register {
-            width: 55%;
-            height: 40px; /* Setting the height for both buttons */
-            background-color: #5B99C2; /* Button color */
-            border-radius: 10px;
-            justify-content: center;
-            margin-top: 15px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            line-height: 1.8;
-        }
-        .btn-login:hover, .btn-register:hover {
-            background-color: #1A4870; /* Darker color on hover */
-            color:white;
-        }
-        .text-muted {
-            color: #6c757d;
-        }
-        @media (max-width:1024px) {
-            .login-container {
-                padding: 48px;
-                max-width: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
-                border-radius: 10px;
-                background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
-                margin: 0;
-                margin-top: 150px;
-                font-family: havana;
-                font-size: 20px;
-            }
-            body {
-                background-image: url('assets/japon.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                overflow-y:hidden;
-                width: 100%;
-            }
-        }
+         body {
+    background-image: url('/assets/japon.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.login-container, .registration-container {
+    padding: 48px;
+    max-width: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4); /* White with 40% transparency */
+    margin: 0;
+    margin-top: 150px;
+    font-family: havana;
+    font-size: 20px;
+}
+
+.login-title, .registration-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: roboto;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.btn-login, .btn-register {
+    width: 55%;
+    height: 40px;
+    background-color: #5B99C2; /* Button color */
+    border-radius: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-login:hover, .btn-register:hover {
+    background-color: #1A4870; /* Darker color on hover */
+    color: white;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+@media (max-width: 1024px) {
+    .login-container {
+        margin-top: 150px;
+        width: 65vh;
+        margin-right:65px;
+        margin-left:0px;
+
+
+    }
+    .registration-container{
+        margin-top: 150px;
+        width: 100vh;
+        margin-right:65px;
+        margin-left:0px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .login-container, .registration-container {
+        margin-top: 250px;
+    }
+}
     </style>
 </head>
 <div class="container my-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
+    <div class="row justify-content-center me-5">
+        <div class="col-lg-6">
             <div class="login-container">
                 <form action="{{ route('login.proses') }}" method="POST" onsubmit="return validatePassword()">
                     @csrf
@@ -119,7 +127,6 @@
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

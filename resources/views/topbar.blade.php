@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,89 +7,65 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <style>
-     .navbar {
-        background-color: rgba(0, 0, 0, 0.5);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        display: flex;
-      }
+      body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      .nav-link {
-        display: inline-block;
-        margin: 20px;
-        position: relative;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        font-family: Comic Sans MS;
-      }
+        .navbar {
+            background-color: #343a40;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-      .navbar .nav-link.active {
-        display: inline-block;
-        margin: 20px;
-        position: relative;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        font-family: Comic Sans MS;
-      }
-      .nav-pills {
-    --bs-nav-pills-border-radius: var(--bs-border-radius);
-    --bs-nav-pills-link-active-color: lime;
-    --bs-nav-pills-link-active-bg: rgb(0, 0, 0, 0.7);
-}
+        .navbar .nav-link {
+            color: #ecf0f1;
+            font-weight: bold;
+            font-family: Comic Sans MS;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-.nav-pills .nav-link {
-    color: inherit;
-    transition: background-color 0.3s, color 0.3s;
-    background-color: rgba(0, 0, 0, 0.7);
-}
+        .navbar .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: lime;
+        }
 
-.nav-pills .nav-link:hover,
-.nav-pills .nav-link:focus {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: lime;
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: var(--bs-nav-pills-link-active-color);
-    background-color: #000000b5;
-}
+        .navbar .nav-link.active {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: lime;
+        }
 
-.nav-pills .nav-link.active {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: lime;
-    border-radius: var(--bs-nav-pills-border-radius);
-}
-      .nav-item {
-        font-size: 15px;
-      }
-      .dropdown-menu {
-    min-width: 240px;
-    margin-top: 10px;
-    background-color: rgba(128, 128, 128, 0.1);
-}
+        .navbar .nav-item {
+            margin: 0;
+        }
 
-/* Ensure bold font weight and white background for dropdown items */
-.dropdown-item {
-    font-weight: bold;
-    background-color: white;
-    background-color: rgba(128, 128, 128, 0.1);
-}
+        .dropdown-menu {
+            min-width: 240px;
+            background-color: rgba(128, 128, 128, 0.1);
+        }
 
-/* Add hover effect */
-.dropdown-menu:hover {
-    background-color:white;
-    color: #000; /* Black text color on hover */
-    cursor: pointer;
-}
+        .dropdown-item {
+            font-weight: bold;
+            background-color: rgba(128, 128, 128, 0.1);
+        }
 
-/* Ensure active state has the same hover effect */
-.dropdown-item:active {
-   background-color: #ffff;
-    color: #000; /* Black text color */
-    cursor: pointer;
-}
+        .dropdown-item:hover,
+        .dropdown-item:active {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dropdown-menu .dropdown-item {
+            padding: 10px 15px;
+        }
+
+        .navbar-brand img {
+            height: 90px;
+            width: 90px;
+        }
 </style>
 <body>
 <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40; height:100px;">
@@ -100,10 +75,27 @@
             <img src="assets/logo.png" alt="Logo" style="height: 90px; width: 90px;" class="me-2">
         </div>
         <!-- Right-aligned profile text and image, centered vertically -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-5 fw-bold nav-pills">
+          <li class="nav-item mx-3">
+            <a class="nav-link fs-5 text-light" href="{{ route('dashboard') }}">dashboard</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link fs-5 text-light" href="{{ route('books') }}">books</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link fs-5 text-light" href="#product">Menu</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link fs-5 text-light" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link fs-5 text-light" href="#testimoni">Testimonial</a>
+          </li>
+    </div>
         <div class="d-flex align-items-center">
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="navbar-text font-light me-3 text-white fs-5">Profil</span>
             <img src="{{ asset('path_to_profile_image.jpg') }}" alt="Profile" class="img-thumbnail rounded-circle" style="height: 40px; width: 40px;">
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown" style="min-width: 200px; margin-top: 10px;">
@@ -118,6 +110,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </nav>
-  @yield('content')
+  @yield('admin')
 </body>
 </html>

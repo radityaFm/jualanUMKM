@@ -1,89 +1,82 @@
-@extends('atas')
-
+@extends('navtop')
 @section('content')
     <style>
          body {
-            background-image: url('assets/japon.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            overflow-y:hidden;
-            width: 100%;
-        }
-        .login-container {
-            padding: 48px;
-            max-width: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
-            margin: 0;
-            margin-top: 190px;
-            font-family: havana;
-            font-size: 20px;
-        }
-        .login-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-family:roboto;
-        }
-        .form-control {
-            margin-bottom: 15px;
-        }  
-        .forgot-password a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-        .btn-register, .btn-login {
-            width: 100%;
-        }
-        .text-muted {
-            color: #6c757d;
-        }
-        
-        .btn-login, .btn-register {
-            width: 55%;
-            height: 65%;
-            background-color: #5B99C2; /* Gray color */
-            border-radius: 10px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .btn-login:hover {
-            background-color: #1A4870; /* Darker gray on hover */
-            color:white;
-        }
-        @media (max-width:1024px) {
-            .login-container {
-                padding: 48px;
-                max-width: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
-                border-radius: 10px;
-                background-color: rgba(255, 255, 255, 0.4); /* Warna putih dengan transparansi 80% */
-                margin: 0;
-                margin-top: 150px;
-                font-family: havana;
-                font-size: 20px;
-            }
-            body {
-                background-image: url('assets/japon.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                overflow-y:hidden;
-                width: 100%;
-            }
-        }
+    background-image: url('assets/japon.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.login-container, .registration-container {
+    padding: 48px;
+    max-width: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4); /* White with 40% transparency */
+    margin: 0;
+    margin-top: 150px;
+    font-family: havana;
+    font-size: 20px;
+}
+
+.login-title, .registration-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: roboto;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.btn-login, .btn-register {
+    width: 55%;
+    height: 40px;
+    background-color: #5B99C2; /* Button color */
+    border-radius: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-login:hover, .btn-register:hover {
+    background-color: #1A4870; /* Darker color on hover */
+    color: white;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+@media (max-width: 1024px) {
+    .login-container, .registration-container {
+        margin-top: 150px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .login-container, .registration-container {
+        margin-top: 250px;
+    }
+}
     </style>
     <div class="container text-center">
         <div class="row g-4 justify-content-center">
