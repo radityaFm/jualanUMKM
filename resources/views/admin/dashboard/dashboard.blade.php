@@ -1,28 +1,28 @@
-@extends('sidebar')
+@extends('topbar')
 
-@section('title', 'Dashboard')
-
+@section('Dashboard')
 @section('admin')
-    <div class="wrapper">
+<div class="wrapper mt-5" style="margin-top: 10cm; display: flex;">
+    <!-- Main Content -->
+    <div class="main-content" style="flex-grow: 1; margin-left: 20px;margin-top:60px;">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Customer</h5>
-              <p class="card-text">Jumlah : {{$customerCount}}</p>
-              <a href="{{ route('customers') }}" class="card-link">Customers Page</a>
+                <h5 class="card-title">Customer</h5>
+                <p class="card-text">Jumlah :</p>
+                <a href="{{ route('customers') }}" class="card-link">Customers Page</a>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin-top: 10px;">
             <div class="card-body">
-              <h5 class="card-title">Photographer in Sessions</h5>
-              <ul>
-              @foreach ($sessions as $sesi)
-                <li class="card-text">{{$sesi->photographer->name}}</li>
-              @endforeach
-              </ul>
-              <a href="{{ route('photography_sessions') }}" class="card-link">Sessions Page</a>
+                <h5 class="card-title">Photographer in Sessions</h5>
+                <ul>
+                    <!-- Add list items if needed -->
+                </ul>
+                <a href="{{ route('umkm') }}" class="card-link">Sessions Page</a>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 <style>

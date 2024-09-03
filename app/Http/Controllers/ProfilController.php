@@ -35,4 +35,20 @@ public function update(Request $request) {
 
   return redirect()->route('profil')->with('success', 'Profile updated successfully.');
 }
+public function store(Request $request)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+    ]);
+
+    // Handle the data processing (e.g., saving to the database)
+    // For example:
+    // $profile = new Profile();
+    // $profile->name = $request->input('name');
+    // $profile->email = $request->input('email');
+    // $profile->save();
+    return redirect()->route('umkm')->with('success', 'Profile updated successfully.');
+}
 }

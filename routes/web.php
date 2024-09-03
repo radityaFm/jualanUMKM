@@ -1,7 +1,8 @@
 <?php
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DasboardController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-    });
-
     Route::middleware(['role:user'])->group(function () {
         Route::get('/umkm', [LoginController::class, 'showUmkm'])->name('umkm');
     });
-Route::middleware('web')->group(function () {
+
     Route::get('/books', [LoginController::class, 'showBooks'])->name('books');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 // Route for processing the login form submission
@@ -32,6 +29,19 @@ Route::get('registrasi', [LoginController::class, 'registrasi'])->name('registra
 Route::post('registrasi/proses', [LoginController::class, 'proses'])->name('registrasi.proses');
 // Route for logging out
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/dasboard', [DasboardController::class, 'index'])->name('dashboard');
+
+
+Route::controller(CustomersController::class)->group(function () {
+    Route::get('/customers', 'customers')->name('customers');
+    // Route::get('/customers/create', 'create')->name('customers.create');
+    // Route::post('/customers/create/update', 'store')->name('customers.update');
+    // Route::get('/customers/edit/{id}', 'edit')->name('customers.editpage');
+    // Route::put('/customers/softdelete/{id}', 'softdelete')->name('customers.softdelete');
+    // Route::put('/customers/edit/update/{id}', 'update')->name('customers.edit');    
+    // Route::get('/customers/restore/{id}', 'restore')->name('customers.restore');
+    // Route::delete('/customers/delete/{id}', 'delete')->name('customers.delete');
+    // Route::get('/customers/history', 'history')->name('customers.history');
 });
 
 

@@ -9,6 +9,10 @@
   min-height: 200px;
   margin-top: -50px;
 }
+.btn{
+  color:gray;
+  border-radius: 12px;
+}
 </style>
 
 @guest
@@ -65,10 +69,9 @@
             </div>
           </div>
         </div>
-        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-item w-100 fw-bold py-2" style="background: none; border: none; color: inherit;">Logout</button>
-              </form>
+        <a href="{{ route('umkm') }}" class="btn btn-success w-100 fw-bold py-2 fs-5" style="background: none; border: none; color: inherit; text-align: left; display: block;">
+    Kembali
+</a>
       </div>
     </div>
   </div>

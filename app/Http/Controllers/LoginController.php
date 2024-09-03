@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +20,7 @@ class LoginController extends Controller
     return view('umkm');
 }
 public function showBooks(){
-    return view('admin/books');
+    return view('books');
 }
 public function login(Request $request)
 {
@@ -39,10 +40,11 @@ public function login(Request $request)
     if ($user && Hash::check($request->password, $user->password)) {
         // Login user
         Auth::login($user);
+
         if ($user->role == 'admin') {
-            return redirect()->route('admin');
+            return redirect()->route('dashboard');
         } elseif ($user->role == 'user') {
-            return redirect()->route('user');
+            return redirect()->route('umkm');
         } else {
             return redirect()->route('dashboard');
         }
@@ -62,11 +64,6 @@ public function registrasi(){
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string'],
         ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
         // Create the user with role-specific password rules
         $user = User::create([
             'name' => $request->name,

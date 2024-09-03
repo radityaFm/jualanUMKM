@@ -1,101 +1,119 @@
 @extends('navtop')
 @section('content')
     <style>
-         body {
-    background-image: url('assets/japon.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    overflow-y: hidden;
-    width: 100%;
-}
+        body {
+            background-image: url('assets/japon.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-y: hidden;
+            width: 100%;
+        }
 
-.login-container, .registration-container {
-    padding: 48px;
-    max-width: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadow-md effect */
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.4); /* White with 40% transparency */
-    margin: 0;
-    margin-top: 150px;
-    font-family: havana;
-    font-size: 20px;
-}
+        .login-container, .registration-container {
+            padding: 48px;
+            max-width: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            margin: 0;
+            margin-top: 150px;
+            font-family: havana;
+            font-size: 20px;
+        }
 
-.login-title, .registration-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    font-family: roboto;
-}
+        .login-title, .registration-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: roboto;
+        }
 
-.form-control {
-    margin-bottom: 15px;
-}
+        .form-control {
+            margin-bottom: 15px;
+        }
 
-.forgot-password a {
-    text-decoration: none;
-    color: #007bff;
-}
+        .forgot-password a {
+            text-decoration: none;
+            color: #007bff;
+        }
 
-.forgot-password a:hover {
-    text-decoration: underline;
-}
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
 
-.btn-login, .btn-register {
-    width: 55%;
-    height: 40px;
-    background-color: #5B99C2; /* Button color */
-    border-radius: 10px;
-    justify-content: center;
-    margin-top: 15px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .btn-login, .btn-register {
+            width: 55%;
+            height: 40px;
+            background-color: #5B99C2;
+            border-radius: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.btn-login:hover, .btn-register:hover {
-    background-color: #1A4870; /* Darker color on hover */
-    color: white;
-}
+        .btn-login:hover, .btn-register:hover {
+            background-color: #1A4870;
+            color: white;
+        }
 
-.text-muted {
-    color: #6c757d;
-}
+        .text-muted {
+            color: #6c757d;
+        }
 
-@media (max-width: 1024px) {
-    .login-container, .registration-container {
-        margin-top: 150px;
-    }
-}
+        @media (max-width: 1024px) {
+            .login-container, .registration-container {
+                margin-top: 150px;
+            }
+        }
 
-@media (max-width: 1440px) {
-    .login-container, .registration-container {
-        margin-top: 250px;
-    }
-}
+        @media (max-width: 1440px) {
+            .login-container, .registration-container {
+                margin-top: 250px;
+            }
+        }
     </style>
+    
     <div class="container text-center">
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center mb-5">
             <div class="col-md-6">
-                <div class="login-container">
-                <form action="{{ route('registrasi.proses') }}" method="POST">
+                <div class="registration-container">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('registrasi.proses') }}" method="POST">
                         @csrf
-                        <h2 class="login-title mb-4">Registrasi</h2>
+                        <h2 class="registration-title my-1">Registrasi</h2>
                         <div class="mb-3">
                             <label for="email" class="form-label" style="margin-right: 90%;">Email</label>
-                            <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                            <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
                             @error('email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label" style="margin-right: 90%";>Username</label>
-                            <input type="text" id="name" name="name" placeholder="Username" class="form-control">
+                            <label for="name" class="form-label" style="margin-right: 90%;">Username</label>
+                            <input type="text" id="name" name="name" placeholder="Username" class="form-control" value="{{ old('name') }}">
                             @error('name')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label" style="margin-right: 90%;">Peran</label>
+                            <select id="role" name="role" class="form-control">
+                                <option value="super-admin">Super Admin</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                            @error('role')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -106,11 +124,11 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="login">
-                        <button type="submit" class="btn btn-primary btn-login btn-sm">Registrasi</button>
-                        <p class="text-muted mt-3">Switch an account?</p>
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-login mt-2">Login</a>
-                    </div>
+                        <div class="registration">
+                            <button type="submit" class="btn btn-primary btn-register btn-sm">Registrasi</button>
+                            <p class="text-muted mt-3">Sudah punya akun?</p>
+                            <a href="{{ route('login') }}" class="btn btn-primary btn-login mt-2">Login</a>
+                        </div>
                     </form>
                 </div>
             </div>
