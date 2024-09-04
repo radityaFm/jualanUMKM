@@ -20,7 +20,7 @@ class LoginController extends Controller
     return view('umkm');
 }
 public function showBooks(){
-    return view('books');
+    return view('admin/books');
 }
 public function login(Request $request)
 {

@@ -1,9 +1,7 @@
-@extends('layout/layout')
-@section('navbaradmin')
+@extends('topbar')
+@section('admin')
 <div class="mt-5">
     <div class="col-12 table-responsive">
-        <a class="btn btn-secondary" href="{{route('customers.create')}}">Create</a>
-        <a class="btn btn-warning" href="{{route('customers.history')}}">History</a>
         <table id="table" class="table table-striped table-secondary table-hover table-borderless">
             <thead>
                 <tr>
@@ -16,27 +14,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $cus)
-                    <tr>
-                        <td>
-                            {{$cus->name}}
-                        </td>
-                        <td>
-                            {{$cus->email}}
-                        </td>
-                        <td>
-                            {{$cus->phone}}
-                        </td>
-                        <td>
-                            {{$cus->created_at}}
-                        </td>
-                        <td>
-                            {{$cus->status_aktif}}
-                        </td>
-                        <td>
-                            <a href="{{ route('customers.editpage', $cus->id)}}" class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#softdel{{ $cus->id }}"><i class="fa-solid fa-trash"></i></a>
-                            <form action="{{ route('customers.softdelete', $cus->id) }}" method="POST" class="modal fade" id="softdel{{ $cus->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <a class="btn btn-success"><i class="fa-solid fa-pencil"></i></a>
+                            <a class="btn btn-danger" data-toggle="modal"><i class="fa-solid fa-trash"></i></a>
+                            <form  method="POST" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-dialog" role="document">
@@ -59,12 +39,10 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
 </div>
-@endsection
 
 <style>
     #table{

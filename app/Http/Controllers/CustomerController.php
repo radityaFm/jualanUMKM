@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class CustomersController extends Controller
+class CustomerController extends Controller
 {
     public function customers()
     {
-        $customers = Customers::where('status_aktif', '=', 'aktif')->get();
-        return view('admin/customers/customer', compact('customers'));
+        return view('admin/customer/customer');
     }
     public function create()
     {

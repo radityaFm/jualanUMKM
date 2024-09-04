@@ -32,8 +32,8 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dasboard', [DasboardController::class, 'index'])->name('dashboard');
 
 
-Route::controller(CustomersController::class)->group(function () {
-    Route::get('/customers', 'customers')->name('customers');
+// Route::controller(CustomersController::class)->group(function () {
+    Route::get('customer', [CustomerController::class, 'customers'])->name('customers');
     // Route::get('/customers/create', 'create')->name('customers.create');
     // Route::post('/customers/create/update', 'store')->name('customers.update');
     // Route::get('/customers/edit/{id}', 'edit')->name('customers.editpage');
@@ -42,7 +42,7 @@ Route::controller(CustomersController::class)->group(function () {
     // Route::get('/customers/restore/{id}', 'restore')->name('customers.restore');
     // Route::delete('/customers/delete/{id}', 'delete')->name('customers.delete');
     // Route::get('/customers/history', 'history')->name('customers.history');
-});
+// });
 
 
 
