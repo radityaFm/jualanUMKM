@@ -1,34 +1,110 @@
 @extends('topbar')
-@section('admin')
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-        <link href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/colreorder/2.0.3/css/colReorder.dataTables.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.css" rel="stylesheet">
-         
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-        <script src="https://cdn.datatables.net/colreorder/2.0.3/js/dataTables.colReorder.js"></script>
-        <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-        <script src="https://kit.fontawesome.com/3ab26b6439.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>umkm</title>
-    
-</head>
-<body>
-<h1>hellow hellow</h1>
-<h1>hellow hellow</h1>
-<h1>hellow hellow</h1>
-</body>
-</html>
+@section('admin')
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<!-- DataTables Responsive CSS -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/dataTables.responsive.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+<style>
+    @media (max-width: 768px) {
+        table.dataTable tbody td {
+            display: block;
+            padding: 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        table.dataTable thead {
+            display: none;
+        }
+        table.dataTable tbody td:before {
+            content: attr(data-label);
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    }
+
+    /* Custom styling for the DataTables search and show buttons */
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length {
+        float: right;
+        margin-bottom: 20px;
+    }
+
+    .dataTables_wrapper .dataTables_filter label,
+    .dataTables_wrapper .dataTables_length label {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .dataTables_wrapper .dataTables_filter input,
+    .dataTables_wrapper .dataTables_length select {
+        margin-left: 10px;
+    }
+</style>
+<div class="container" style="margin-top: 140px !important;">
+    <h1>Daftar Buku</h1>
+    <a href="{{ route('books.create') }}" class="btn btn-primary mb-3 mt-1">Tambah Buku</a>
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    <!-- Tambahkan ID pada table untuk DataTables -->
+    <table id="myTable" class="table table-striped table-hover dt-responsive nowrap" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Judul</th>
+                <th>Penulis</th>
+                <th>Penerbit</th>
+                <th>Tahun Terbit</th>
+                <th>ISBN</th>
+                <th>Halaman</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($books as $book)
+            <tr>
+                <td data-label="Judul">{{ $book->title }}</td>
+                <td data-label="Penulis">{{ $book->author }}</td>
+                <td data-label="Penerbit">{{ $book->publisher }}</td>
+                <td data-label="Tahun Terbit">{{ $book->published_year }}</td>
+                <td data-label="ISBN">{{ $book->isbn }}</td>
+                <td data-label="Halaman">{{ $book->pages }}</td>
+                <td data-label="Status">{{ $book->status }}</td>
+                <td data-label="Aksi">
+                    <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 @endsection
+
+<!-- DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<!-- DataTables Responsive JS -->
+<script src="//cdn.datatables.net/1.11.5/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Inisialisasi DataTables -->
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            responsive: true,
+            autoWidth: false
+        });
+    });
+</script>

@@ -30,9 +30,14 @@
                                     <div class="modal-body">
                                       Are you sure you want to delete this item?
                                     </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <div>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                                        </div>
+                                        <div>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        </div>
                                     </div>
                                   </div>
                                 </div>

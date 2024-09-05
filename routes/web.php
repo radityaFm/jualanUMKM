@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\DasboardController;
@@ -19,7 +20,6 @@ use Illuminate\Support\Facades\Route;
         Route::get('/umkm', [LoginController::class, 'showUmkm'])->name('umkm');
     });
 
-    Route::get('/books', [LoginController::class, 'showBooks'])->name('books');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 // Route for processing the login form submission
 Route::post('login/proses', [LoginController::class, 'login'])->name('login.proses');
@@ -44,6 +44,16 @@ Route::get('/dasboard', [DasboardController::class, 'index'])->name('dashboard')
     // Route::get('/customers/history', 'history')->name('customers.history');
 // });
 
+
+// books//
+
+Route::get('/books', [BooksController::class, 'index'])->name('books');
+Route::post('/books/store', [BooksController::class, 'store'])->name('books.store');
+Route::get('/books/create', [BooksController::class, 'create'])->name('books.create');
+Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
+Route::put('/books/{book}', [BooksController::class, 'update'])->name('books.update');
+Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+// Additional route if needed for other purposes
 
 
 
