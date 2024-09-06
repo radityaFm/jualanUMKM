@@ -32,19 +32,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dasboard', [DasboardController::class, 'index'])->name('dashboard');
 
 
-// Route::controller(CustomersController::class)->group(function () {
-    Route::get('customer', [CustomerController::class, 'customers'])->name('customers');
-    // Route::get('/customers/create', 'create')->name('customers.create');
-    // Route::post('/customers/create/update', 'store')->name('customers.update');
-    // Route::get('/customers/edit/{id}', 'edit')->name('customers.editpage');
-    // Route::put('/customers/softdelete/{id}', 'softdelete')->name('customers.softdelete');
-    // Route::put('/customers/edit/update/{id}', 'update')->name('customers.edit');    
-    // Route::get('/customers/restore/{id}', 'restore')->name('customers.restore');
-    // Route::delete('/customers/delete/{id}', 'delete')->name('customers.delete');
-    // Route::get('/customers/history', 'history')->name('customers.history');
-// });
-
-
 // books//
 
 Route::get('/books', [BooksController::class, 'index'])->name('books');
@@ -55,9 +42,16 @@ Route::put('/books/{book}', [BooksController::class, 'update'])->name('books.upd
 Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
 // Additional route if needed for other purposes
 
+//customer//
 
-
-
+Route::get('/admin/customer', [CustomerController::class, 'index'])->name('customers.index');
+Route::get('/admin/createcustomer', [CustomerController::class, 'create'])->name('customers.create');
+Route::post('/admin/customer', [CustomerController::class, 'store'])->name('customers.store');
+Route::post('/admin/customer/{customer}/borrow', [CustomerController::class, 'borrowBook'])->name('customers.borrow');
+Route::delete('/admin/customer/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+Route::put('/admin/customer/{customer}', [CustomerController::class, 'update'])->name('customers.update');
 // profil //
 
 // Route to show the profile

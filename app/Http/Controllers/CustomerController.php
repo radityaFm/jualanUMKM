@@ -1,99 +1,70 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Customers;
-use App\Http\Controllers\Controller;
+use App\Models\Customer; // Correct import for the Customer model
+use App\Models\Book; // Ensure this import is included if you use Book model
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class CustomerController extends Controller
 {
-    public function customers()
-    {
-        return view('admin/customer/customer');
-    }
+public function index()
+{
+    $customers = Customer::all();
+    return view('admin/customer', compact('customers'));
+}
+
+
     public function create()
     {
-        $customers = Customers::where('status_aktif', '=', 'aktif')->get();
-        return view('admin/customers/crud/create', compact('customers'));
+        return view('admin/createcustomer');
     }
+
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required'],
-            'phone' => ['required', 'numeric'],
-            'email' => ['required', 'email', 'regex:/^.+@.+\..+$/'],
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:customers',
+            'phone' => 'required',
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        else{
-            Customers::create([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'phone' => $request->input('phone'),
-                'created_at' => now(),
-                'updated_at' => now(),
-                'status_aktif' => 'aktif'
-            ]);
-
-            return redirect()->route('customers');
-        }
+    
+        Customer::create($validatedData);
+    
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully!');
     }
-    public function edit(int $id)
+    public function borrowBook(Request $request, Customer $customer)
     {
-        $customers = Customers::where('id', $id)->first();
-        return view('admin/customers/crud/edit', compact('customers'));
-    }
-    public function update(Request $request, int $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required'],
-            'phone' => ['required', 'numeric'],
-            'email' => ['required', 'email', 'regex:/^.+@.+\..+$/'],
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        $book = Book::find($request->book_id);
+        
+        if ($book && $book->copies > 0) {
+            $book->status = $book->copies == 1 ? 'reserved' : 'available';
+            $book->copies -= 1;
+            $book->save();
+
+            $customer->books()->attach($book);
+            return back()->with('success', 'Book borrowed successfully!');
         }
-        else{
-            $model = Customers::where('id', $id)->first();
-            $model->update([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'phone' => $request->input('phone'),
-                'created_at' => now(),
-                'updated_at' => now(),
-                'status_aktif' => 'aktif'
-            ]);
-            return redirect()->route('customers', $model->id);
-        }
+        return back()->with('error', 'Book is not available!');
     }
-    public function history(){
-        $customers = Customers::where('status_aktif', '=', 'Nonaktif')->get();
-        return view('admin/customers/historycustomer', compact('customers'));
-    }
-    public function softdelete(int $id)
+
+    public function destroy(Customer $customer)
     {
-        $customers = Customers::where('id', '=', $id)->first();
-        $customers->status_aktif = 'Nonaktif';
-        $customers->save();
-
-        return redirect()->route('customers');
+        $customer->delete();
+        return back()->with('success', 'Customer deleted successfully!');
     }
-    public function restore(int $id){
-        $customers = Customers::where('id', '=', $id)->first();
-        $customers->status_aktif = 'Aktif';
-        $customers->save();
+    public function edit(Customer $customer)
+{
+    return view('admin.editcustomer', compact('customer'));
+}
 
-        return redirect()->route('customers.history');
-    }
-    public function delete(int $id)
-    {
-        $customers = Customers::where('id', '=', $id)->first();
-        $customers->delete();
+public function update(Request $request, Customer $customer)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:customers,email,' . $customer->id,
+        'phone' => 'required',
+    ]);
 
-        return redirect()->route('customers.history');
-    }
+    $customer->update($validatedData);
+    return redirect()->route('customers.index')->with('success', 'Customer updated successfully!');
+}
 }

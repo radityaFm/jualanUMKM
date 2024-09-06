@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h5 class="card-title">Customer Pages</h5>
                 <p class="card-text fs-5">Jumlah :</p>
-                <a href="{{ route('customers') }}" class="card-link" style="text-decoration:none;">Visit Customers Page</a>
+                <a href="{{ route('customers.index') }}" class="card-link" style="text-decoration:none;">Visit Customers Page</a>
             </div>
         </div>
         <div class="card shadow" style="width: 18rem; margin-top: 10px;">
