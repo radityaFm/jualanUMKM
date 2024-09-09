@@ -14,74 +14,99 @@
     }
 
     .navbar {
-      background-color: #343a40;
+      background-color: rgba(0, 0, 0, 0.5);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
     }
 
-    .navbar .nav-link {
-      color: #ecf0f1;
-      font-weight: bold;
-      font-family: Comic Sans MS;
-      padding: 10px 15px;
+    .navbar .nav-link,
+    .navbar .nav-link.active {
+      display: inline-block;
+      margin: 20px;
+      position: relative;
       border-radius: 5px;
       text-align: center;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .navbar .nav-link:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: lime;
-    }
-
-    .navbar .nav-link.active {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: lime;
-    }
-
-    .navbar .nav-item {
-      margin: 0;
-    }
-
-    .dropdown-menu {
-      min-width: 240px;
-      background-color: rgba(128, 128, 128, 0.1);
-      border: none;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      margin-top: 10px;
-    }
-
-    .dropdown-item {
       font-weight: bold;
-      background-color: rgba(128, 128, 128, 0.1);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      font-family: Comic Sans MS;
     }
 
-    .dropdown-item:hover,
-    .dropdown-item:active {
-      background-color: #fff;
-      color: #000;
+    .nav-pills .nav-link:active {
+      background-color: black;
+      color: lime;
     }
 
-    .dropdown-menu .dropdown-item {
-      padding: 10px 15px;
+    .nav-link:hover,
+    .nav-link:active {
+      color: lime;
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
-    .navbar-toggler {
-      border: none;
-      background: transparent;
-      color: #ecf0f1;
+    .nav-pills:hover,
+    .nav-link:active {
+      color: lime;
     }
 
-    .navbar-toggler-icon {
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTIvMjEwMyI+PHBhdGggZD0iTTEuNTUgMTBIMjAuNTVDMTkuMTA5IDAgMjAgMCAyMCAwIDcuOTg5IDAgMTEuNDU1IDEuNTQ1IDEyLjUyNSA4Ljg3OSAxMy4xMjMgMy42NDQgNy43NzQgMTEuMzUgNy4yOTMiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZS1sZW5ndGgtcmFuZ2U9IjUuNSIgLz48L3N2Zz4=');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
+    .nav-pills {
+      --bs-nav-pills-border-radius: var(--bs-border-radius);
+      --bs-nav-pills-link-active-color: lime;
+      --bs-nav-pills-link-active-bg: rgba(0, 0, 0, 0.7);
     }
 
-    .navbar-nav {
-      margin-left: auto;
+    .nav-pills-link:active {
+      color: lime;
+      background-color: #2e2e2e;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     }
 
+    .nav-item {
+      font-size: 15px;
+    }
+    .dropdown-menu {
+    min-width: 240px;
+    margin-top: 10px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Ensure bold font weight and white background for dropdown items */
+.dropdown-item {
+    font-weight: bold;
+    background-color: white;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Add hover effect */
+.dropdown-menu:hover {
+    background-color:white;
+    color: #000; /* Black text color on hover */
+    cursor: pointer;
+}
+
+/* Ensure active state has the same hover effect */
+.dropdown-item:active {
+   background-color: #ffff;
+    color: #000; /* Black text color */
+    cursor: pointer;
+}
+    .hamburger-icon.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -8px);
+    }
+
+    .navbar-collapse.collapse {
+      display: none !important;
+    }
+
+    .navbar-collapse.show {
+      display: block !important;
+    }
     @media (max-width: 992px) {
       .navbar-nav {
         display: flex;
@@ -94,19 +119,38 @@
         text-align: left;
       }
     }
+    @media (max-width:1024px){
+      .hamburger-icon span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+.dropdown-item {
+  display: flex;            /* Aktifkan flexbox */
+  justify-content: center;   /* Memusatkan secara horizontal */
+  align-items: center;       /* Memusatkan secara vertikal */
+  font-weight: bold;         /* Bold untuk gaya */
+  background-color: white;   /* Warna latar belakang */
+  padding: 10px;             /* Tambahkan padding untuk ruang */
+}
+    }
   </style>
 </head>
 <body>
-
 <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0;">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
       <img src="assets/logo.png" alt="Logo" />
     </a>
-    <!-- Navbar Toggler (Visible on mobile and tablet) -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Hamburger Icon (Visible on mobile and tablet only) -->
+    <div class="hamburger-icon d-lg-none" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto fw-bold nav-pills">
@@ -138,11 +182,17 @@
 @yield('admin')
 
 <script>
-  // JavaScript for hamburger menu toggle
-  document.getElementById('hamburger').addEventListener('click', function() {
-    this.classList.toggle('open');
-    document.getElementById('navbarNav').classList.toggle('show');
-  });
+   document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.getElementById('hamburger');
+      const navbarCollapse = document.getElementById('navbarNav');
+
+      hamburger.addEventListener('click', function () {
+        // Toggle the 'active' class for hamburger icon
+        hamburger.classList.toggle('active');
+        // Toggle the 'show' class for navbar collapse
+        navbarCollapse.classList.toggle('show');
+      });
+    });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
