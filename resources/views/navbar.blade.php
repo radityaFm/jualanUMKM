@@ -121,7 +121,7 @@
 <nav id="navbar-example" class="navbar navbar-expand-lg" style="position: fixed; z-index: 1030; top: 0; right: 0; left: 0; background-color: #343a40">
     <div class="container-fluid">
       <a class="navbar-brand" href="">
-        <img src="assets/logo.png" alt="Logo" />
+        <img src="image/logo.png" alt="Logo" />
       </a>
       <!-- Hamburger Icon (Visible on mobile and tablet only) -->
       <div class="hamburger-icon d-lg-none" id="hamburger">

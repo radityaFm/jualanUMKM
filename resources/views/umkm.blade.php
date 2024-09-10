@@ -438,6 +438,16 @@
   .navbar .navbar-nav {
     margin-left: auto; /* Membuat navbar navigation berada di kanan */
   }
+  .about {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%; /* Sesuaikan dengan ukuran yang diinginkan */
+    max-width: 80%;
+    background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 15px;
+      }
    }
 
 /* Untuk perangkat dengan lebar maksimum 768px (ponsel besar dan tablet kecil) */
@@ -521,6 +531,16 @@
   .faq-image {
     max-height: 300px; /* Adjust max height for tablets */
   }
+  .about {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 210%; /* Sesuaikan dengan ukuran yang diinginkan */
+    max-height:100%;
+    background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 15px;
+      }
  
 }
 
@@ -619,10 +639,10 @@
           </div>
           <div class="container overflow-hidden about-main">
             <div class="row gy-4 gy-md-0 gx-xxl-5">
-                <div class="col-12 col-md-6">
-                    <div class="card border-0">
-                        <img class="foto" src="assets/about1" alt="" data-aos="fade-in" />
-                    </div>
+                <div class="col-12 col-md-6 card-border">
+                      <div class="col-12 col-md-6">
+                   <img src="image/about1.png" alt="" data-aos="fade-in" class="about">
+                </div>    
                 </div>       
                 <div class="col-12 col-md-6 my-auto" data-aos="fade-in">
                   <div class="about-deskripsi">
@@ -646,7 +666,7 @@
           <div class="row" data-aos="fade-in">
             <div class="col-md-6 col-sm-12">
               <div class="polaroid">
-                <img src="image/galeri1.png" alt="Foto 1" />
+              <img src="image/galeri1.png" alt="Foto 1">
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
@@ -689,7 +709,7 @@
                   <h4 style="font-weight: 600">Menu - menu yang tersedia:</h4>
                   <div class="row mb-4" data-aos="fade-in">
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Sujel Vanila" data-price="Rp 10.000" data-desc="Jeli dengan susu rasa vanila" data-image="assets/jeli0.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Sujel Vanila" data-price="Rp 10.000" data-desc="Jeli dengan susu rasa vanila" data-image="image/jeli0.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/galeri3.png" class="card-img-top" alt="Sujel Vanila" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Vanila</h5>
@@ -697,7 +717,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Sujel Komplit" data-price="Rp 15.000" data-desc="Jeli susu rasa vanila topping boda" data-image="assets/jeli1.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Sujel Komplit" data-price="Rp 15.000" data-desc="Jeli susu rasa vanila topping boda" data-image="image/jeli1.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/galeri2.png" class="card-img-top" alt="Sujel Komplit" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Komplit</h5>
@@ -705,7 +725,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Jeli Cokelat" data-price="Rp 12.000" data-desc="Jeli cokelat dengan susu rasa coklat" data-image="assets/jeli2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Jeli Cokelat" data-price="Rp 12.000" data-desc="Jeli cokelat dengan susu rasa coklat" data-image="image/jeli2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/galeri5.png" class="card-img-top" alt="Jeli Cokelat" />
                         <div class="card-body">
                           <h5 class="card-title">Jeli Cokelat</h5>
@@ -719,7 +739,7 @@
                 <div class="container menu-section mb-2 mt-4">
                   <div class="row mb-4">
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Yogurt 1" data-price="Rp 8.000" data-desc="Yogurt dengan rasa vanilla yang lembut" data-image="assets/yogurt1.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Yogurt 1" data-price="Rp 8.000" data-desc="Yogurt dengan rasa vanilla yang lembut" data-image="image/yogurt1.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/yogurt3.jpeg" class="card-img-top" alt="Yogurt 1" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 1</h5>
@@ -727,7 +747,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Yogurt 2" data-price="Rp 9.000" data-desc="Yogurt dengan rasa stroberi yang segar" data-image="assets/yogurt2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Yogurt 2" data-price="Rp 9.000" data-desc="Yogurt dengan rasa stroberi yang segar" data-image="image/yogurt2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/yogurt4.jpeg" class="card-img-top" alt="Yogurt 2" />
                         <div class="card-body">
                           <h5 class="card-title ">Yogurt 2</h5>
@@ -735,7 +755,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                      <div class="card" data-name="Yogurt 3" data-price="Rp 10.000" data-desc="Yogurt dengan campuran rasa buah tropis" data-image="assets/yogurt3.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
+                      <div class="card" data-name="Yogurt 3" data-price="Rp 10.000" data-desc="Yogurt dengan campuran rasa buah tropis" data-image="image/yogurt3.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/yogurt1.png" class="card-img-top" alt="Yogurt 3" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 3</h5>
@@ -771,7 +791,7 @@
           <div class="container">
             <div class="row gy-5 gy-lg-0 align-items-center">
               <div class="FAQ col-12 col-lg-6 d-flex justify-content-center">
-                <img class="img rounded h-50 w-50" loading="lazy" src="assets/faq1" alt="How can we help you?" data-aos="fade-in" style="width: 150px; height: 100px" />
+                <img class="img rounded h-50 w-50" loading="lazy" src="image/faq1.png" alt="How can we help you?" data-aos="fade-in" style="width: 150px; height: 100px" />
               </div>
               <div class="col-12 col-lg-6">
                 <div class="row justify-content-xl-end" data-aos="fade-in">
@@ -844,7 +864,7 @@
                 <div class="card border-0 border-bottom border-primary" data-aos="fade-in">
                   <div class="card-body p-4 p-xxl-5">
                     <figure>
-                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="assets/testi1" alt="Luna John" />
+                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="image/testi1.png" alt="Luna John" />
                       <figcaption>
                         <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
                         <blockquote class="bsb-blockquote-icon mb-4 fs-5">pelayanan sangat cepat, rasa nya segar dan tidak membuat batuk</blockquote>
@@ -858,7 +878,7 @@
                 <div class="card border-0 border-bottom border-primary" data-aos="fade-in">
                   <div class="card-body p-4 p-xxl-5">
                     <figure>
-                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="assets/testi1" alt="Mark Smith" />
+                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="image/testi1.png" alt="Mark Smith" />
                       <figcaption>
                         <div class="bsb-ratings text-warning mb-3" data-bsb-star="4" data-bsb-star-off="1"></div>
                         <blockquote class="bsb-blockquote-icon mb-4 fs-4">walaupun murah tetapi rasanya tidak murahan.</blockquote>
@@ -872,7 +892,7 @@
                 <div class="card border-0 border-bottom border-primary" data-aos="fade-in">
                   <div class="card-body p-4 p-xxl-5">
                     <figure>
-                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="assets/testi1" alt="Luke Reeves" />
+                      <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="image/testi1.png" alt="Luke Reeves" />
                       <figcaption>
                         <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
                         <blockquote class="bsb-blockquote-icon mb-4 fs-5">brand yang sangat bagus, pengemasan aman dan penjual sangat ramah</blockquote>

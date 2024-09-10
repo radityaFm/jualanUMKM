@@ -97,7 +97,7 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- Logo on the left, centered vertically -->
         <div class="d-flex align-items-center">
-            <img src="assets/logo.png" alt="Logo" style="height: 90px; width: 90px;" class="me-2">
+            <img src="image/logo.png" alt="Logo" style="height: 90px; width: 90px;" class="me-2">
         </div>
 </div>
 <!-- Bootstrap JS -->

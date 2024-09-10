@@ -52,6 +52,9 @@ Route::delete('/admin/customer/{customer}', [CustomerController::class, 'destroy
 Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::put('/admin/customer/{customer}', [CustomerController::class, 'update'])->name('customers.update');
+
+
+
 // profil //
 
 // Route to show the profile
