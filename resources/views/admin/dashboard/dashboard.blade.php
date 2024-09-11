@@ -20,12 +20,12 @@
                 <a href="{{ route('books') }}" class="card-link" style="text-decoration:none;">Visit Books Page</a>
             </div>
         </div>
-        <div class="card shadow" style="widht: 18rem; margin-top: 10px;">
+        <!-- <div class="card shadow" style="widht: 18rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Absensi Pages</h5>
                 <p class="card-text fs-5">jumlah :</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

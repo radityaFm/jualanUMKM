@@ -350,6 +350,20 @@
         background-size: cover;
         margin-bottom: 500px;
       }
+      .overlay-text {
+  position: absolute;
+  bottom: 10px;
+  left: 7%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 50%;
+  text-align: center;
+  border-radius: 5px;
+}
       /* Responsive styles */
    /* Untuk perangkat dengan lebar maksimum 575px (ponsel kecil) */
    @media (min-width: 425px) (max-width:575px) {
@@ -619,8 +633,40 @@
           </div>
         </div>
       </div>
+      <div class="my-5 mt-4" data-spy="scroll" data-target="#navbar-example" data-offset="40" style="margin-top: 50px">
+        <div id="carouselExample" class="carousel slide mt-5 mb-4" style="margin-top: 50px;">
+            <div class="carousel-inner">
+                <div class="carousel-item active"></div>
+            </div>
+        </div>
+        <div class="row" data-aos="fade-in" style="margin-bottom: -10px;">
+          <div class="col-md-3 col-sm-8">
+            <div class="polaroid position-relative">
+              <img src="image/galeri1.png" alt="Foto 1" />
+              <div class="overlay-text">Susu jeli buble gum</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-8">
+            <div class="polaroid position-relative">
+              <img src="image/galeri2.png" alt="Foto 2" />
+              <div class="overlay-text">Susu jeli vanilla</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-8">
+            <div class="polaroid position-relative">
+              <img src="image/yogurt3.jpeg" alt="Foto 2" />
+              <div class="overlay-text">Variant yogurt medium</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-8">
+            <div class="polaroid position-relative">
+              <img src="image/yogurt2.jpeg" alt="Foto 2" />
+              <div class="overlay-text">Variant yogurt large</div>
+            </div>
+          </div>
+        </div>        
+        </div>
       </div>
-
       <div class="my-5 mt-4" data-spy="scroll" data-target="#navbar-example" data-offset="40" style="margin-top: 50px">
         <div id="carouselExample" class="carousel slide mt-5 mb-4">
           <div class="carousel-inner">
@@ -659,41 +705,10 @@
                   </div>
                 </div>
             </div>
-        </div>
+        </div> 
         </section>
-        <div class="container mt-5" id="galeri">
-          <h2 class="galeri text-center mb-4 mt-5">Galery</h2>
-          <div class="row" data-aos="fade-in">
-            <div class="col-md-6 col-sm-12">
-              <div class="polaroid">
-              <img src="image/galeri1.png" alt="Foto 1">
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="polaroid">
-                <img src="image/galeri2.png" alt="Foto 2" />
-              </div>
-            </div>
-          </div>
-          <div class="row mt-5" data-aos="fade-in">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="polaroid">
-                <img src="image/yogurt1.png" alt="Foto 3" />
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="polaroid">
-                <img src="image/yogurt2.jpeg" alt="Foto 4" />
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="polaroid">
-                <img src="image/yogurt3.jpeg" alt="Foto 5" />
-              </div>
-            </div>
-          </div>
-        </div>
         <section id="product">
+        <h2 class="galeri text-center mb-4 mt-5">Produk kami</h2>
           <div class="container mt-5 my-3">
             <ul class="nav nav-tabs" id="menuTabs" role="tablist">
               <li class="nav-item">
@@ -713,6 +728,7 @@
                         <img src="image/galeri3.png" class="card-img-top" alt="Sujel Vanila" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Vanila</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>
@@ -721,6 +737,7 @@
                         <img src="image/galeri2.png" class="card-img-top" alt="Sujel Komplit" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Komplit</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>
@@ -729,6 +746,7 @@
                         <img src="image/galeri5.png" class="card-img-top" alt="Jeli Cokelat" />
                         <div class="card-body">
                           <h5 class="card-title">Jeli Cokelat</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>
@@ -743,6 +761,7 @@
                         <img src="image/yogurt3.jpeg" class="card-img-top" alt="Yogurt 1" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 1</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>
@@ -751,6 +770,7 @@
                         <img src="image/yogurt4.jpeg" class="card-img-top" alt="Yogurt 2" />
                         <div class="card-body">
                           <h5 class="card-title ">Yogurt 2</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>
@@ -759,6 +779,7 @@
                         <img src="image/yogurt1.png" class="card-img-top" alt="Yogurt 3" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 3</h5>
+                          <button class="btn btn-success">Pesan Sekarang !</button>
                         </div>
                       </div>
                     </div>

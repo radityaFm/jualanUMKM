@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,7 +54,18 @@ Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'
 Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::put('/admin/customer/{customer}', [CustomerController::class, 'update'])->name('customers.update');
 
+// keranjang //
 
+Route::middleware(['auth'])->group(function () {
+    // Menampilkan halaman keranjang
+    Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
+    
+    // Route untuk menambah produk ke keranjang
+    Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
+    
+    // Route untuk melanjutkan checkout
+    Route::post('/checkout', [KeranjangController::class, 'checkout'])->name('keranjang.checkout');
+});
 
 // profil //
 
