@@ -2,76 +2,55 @@
 
 @section('content')
 <div class="container mt-5">
-    <h2 class="mb-4">Keranjang Belanja Anda</h2>
+    <h2>Keranjang Belanja</h2>
 
     @if(session('success'))
-    <div id="success-message" data-message="{{ session('success') }}"></div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
 
-    @if(session('error'))
-    <div id="error-message" data-message="{{ session('error') }}"></div>
-    @endif
+    @if(!empty($cart) && count($cart) > 0)
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($cart as $item)
+            <tr>
+                <td>{{ $item['name'] }}</td>
+                <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
+                <td>{{ $item['quantity'] }}</td>
+                <td>Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}</td>
+                <td>
+                    <!-- Remove Item Button -->
+                    <form action="{{ route('cart.remove', $loop->index) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Produk</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Harga Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($keranjangs as $keranjang)
-                <tr>
-                    <td>{{ $keranjang->produk->nama }}</td>
-                    <td>Rp {{ number_format($keranjang->produk->harga, 0, ',', '.') }}</td>
-                    <td>{{ $keranjang->jumlah }}</td>
-                    <td>Rp {{ number_format($keranjang->harga_total, 0, ',', '.') }}</td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="4" class="text-center">Keranjang Anda kosong.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
+    <div class="text-right mb-4">
+        <h4>Total: Rp {{ number_format($totalPrice, 0, ',', '.') }}</h4>
     </div>
 
-    <form action="{{ route('keranjang.checkout') }}" method="POST">
+    <!-- Order Form -->
+    <form action="{{ route('cart.order') }}" method="POST">
         @csrf
-        <div class="text-right">
-            <button type="submit" class="btn btn-primary">Checkout</button>
-        </div>
+        <button type="submit" class="btn btn-success btn-lg">Pesan Sekarang</button>
     </form>
+    @else
+    <p>Keranjang anda kosong!</p>
+    @endif
 </div>
-
-<!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const successMessage = document.getElementById('success-message');
-        const errorMessage = document.getElementById('error-message');
-
-        if (successMessage) {
-            Swal.fire({
-                title: 'Sukses!',
-                text: successMessage.dataset.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        }
-
-        if (errorMessage) {
-            Swal.fire({
-                title: 'Gagal!',
-                text: errorMessage.dataset.message,
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
-    });
-</script>
 @endsection

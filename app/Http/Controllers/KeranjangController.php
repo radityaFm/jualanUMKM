@@ -3,61 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
-use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class KeranjangController extends Controller
+class CartController extends Controller
 {
-    // Menampilkan halaman keranjang
-    public function index()
+    public function show()
     {
-        $user = Auth::user();
-        $keranjangs = Keranjang::where('user_id', $user->id)->with('produk')->get();
-        return view('keranjang', compact('keranjangs'));
+        // Fetch cart data (from session or database)
+        $cart = session()->get('cart', []);
+
+        // Calculate total price
+        $totalPrice = array_reduce($cart, function ($sum, $item) {
+            return $sum + $item['price'] * $item['quantity'];
+        }, 0);
+
+        return view('keranjang', ['cart' => $cart, 'totalPrice' => $totalPrice]);
     }
 
-    // Menambahkan produk ke keranjang
-    public function tambah(Request $request)
+    public function order(Request $request)
     {
-        $produk = Produk::findOrFail($request->produk_id);
-        $user = Auth::user();
+        // Validate the order request
+        $request->validate([
+            'cart' => 'required|array',
+        ]);
 
-        $keranjang = Keranjang::where('user_id', $user->id)
-            ->where('produk_id', $request->produk_id)
-            ->first();
+        // Process the order here (e.g., save to the database)
 
-        if ($keranjang) {
-            // Update jumlah produk yang sudah ada di keranjang
-            $keranjang->jumlah += $request->jumlah;
-            $keranjang->harga_total += $request->jumlah * $produk->harga;
-        } else {
-            // Tambahkan produk baru ke keranjang
-            Keranjang::create([
-                'user_id' => $user->id,
-                'produk_id' => $produk->id,
-                'jumlah' => $request->jumlah,
-                'harga_total' => $request->jumlah * $produk->harga,
-            ]);
-        }
+        // Clear the cart after successful order
+        session()->forget('cart');
 
-        return redirect()->route('keranjang.index')->with('success', 'Produk berhasil ditambahkan ke keranjang');
+        return redirect()->route('cart.show')->with('success', 'Pesanan berhasil dilakukan!');
+    }
+    public function remove($index)
+{
+    $cart = session()->get('cart', []);
+
+    // Remove the item from the cart
+    if (isset($cart[$index])) {
+        unset($cart[$index]);
+        session()->put('cart', $cart);
     }
 
-    // Melakukan checkout
-    public function checkout(Request $request)
-    {
-        $user = Auth::user();
-        $keranjangs = Keranjang::where('user_id', $user->id)->get();
-
-        if ($keranjangs->isEmpty()) {
-            return redirect()->route('keranjang.index')->with('error', 'Keranjang Anda kosong!');
-        }
-
-        // Logika checkout misalnya mengurangi stok produk, membuat pesanan, dll.
-        // Misalnya, kita hanya menghapus keranjang setelah checkout.
-        Keranjang::where('user_id', $user->id)->delete();
-
-        return redirect()->route('keranjang.index')->with('success', 'Checkout berhasil! Terima kasih atas pesanan Anda.');
-    }
+    return redirect()->route('cart.show')->with('success', 'Produk berhasil dihapus dari keranjang.');
+}
 }

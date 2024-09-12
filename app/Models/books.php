@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes; // Correct import for SoftDeletes 
 
 class Books extends Model
 {
-    use SoftDeletes; // Apply the SoftDeletes trait
+    use SoftDeletes;
 
-    protected $fillable = [
-        'title', 'author', 'publisher', 'published_year', 'isbn', 'pages', 'status',
-    ];
+    // Tentukan bahwa kolom 'deleted_at' akan diisi secara otomatis saat soft delete
+    protected $dates = ['deleted_at'];
 
-    // If needed, declare $dates for deleted_at
-    protected $dates = ['deleted_at']; 
+    // Tentukan atribut lain jika ada
+    protected $fillable = ['title', 'author', 'publisher', 'published_year', 'isbn', 'pages', 'status'];
 }

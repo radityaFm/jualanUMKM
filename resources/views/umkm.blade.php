@@ -728,8 +728,10 @@
                         <img src="image/galeri3.png" class="card-img-top" alt="Sujel Vanila" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Vanila</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <button class="btn btn-success">
+                              <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+                          </button>
+                      </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -737,17 +739,18 @@
                         <img src="image/galeri2.png" class="card-img-top" alt="Sujel Komplit" />
                         <div class="card-body">
                           <h5 class="card-title">Sujel Komplit</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <button class="btn btn-success">
+                              <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+                          </button>
+                      </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                       <div class="card" data-name="Jeli Cokelat" data-price="Rp 12.000" data-desc="Jeli cokelat dengan susu rasa coklat" data-image="image/jeli2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/galeri5.png" class="card-img-top" alt="Jeli Cokelat" />
                         <div class="card-body">
-                          <h5 class="card-title">Jeli Cokelat</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <h5 class="card-title">Jeli cokelat</h5>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -761,17 +764,21 @@
                         <img src="image/yogurt3.jpeg" class="card-img-top" alt="Yogurt 1" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 1</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <button class="btn btn-success">
+                              <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+                          </button>
+                      </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                       <div class="card" data-name="Yogurt 2" data-price="Rp 9.000" data-desc="Yogurt dengan rasa stroberi yang segar" data-image="image/yogurt2.jpg" data-bs-toggle="modal" data-bs-target="#productModal">
                         <img src="image/yogurt4.jpeg" class="card-img-top" alt="Yogurt 2" />
                         <div class="card-body">
-                          <h5 class="card-title ">Yogurt 2</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <h5 class="card-title">Yogurt 2</h5>
+                          <button class="btn btn-success">
+                              <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+                          </button>
+                      </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -779,13 +786,18 @@
                         <img src="image/yogurt1.png" class="card-img-top" alt="Yogurt 3" />
                         <div class="card-body">
                           <h5 class="card-title">Yogurt 3</h5>
-                          <button class="btn btn-success">Pesan Sekarang !</button>
-                        </div>
+                          <button class="btn btn-success">
+                              <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+                          </button>
+                      </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <button class="btn btn-success">
+                  <a href="{{ route('keranjang') }}" style="color: white; text-decoration: none;">Pesan Sekarang!</a>
+               </button>
             </div>
           </div>
           <!-- Modal -->

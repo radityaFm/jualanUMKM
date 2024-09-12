@@ -17,10 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-    Route::middleware(['role:user'])->group(function () {
-        Route::get('/umkm', [LoginController::class, 'showUmkm'])->name('umkm');
-    });
-
+Route::get('/umkm', [YourController::class, 'showUmkm'])->name('umkm');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 // Route for processing the login form submission
 Route::post('login/proses', [LoginController::class, 'login'])->name('login.proses');
@@ -54,18 +51,12 @@ Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'
 Route::get('/admin/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::put('/admin/customer/{customer}', [CustomerController::class, 'update'])->name('customers.update');
 
-// keranjang //
 
-Route::middleware(['auth'])->group(function () {
-    // Menampilkan halaman keranjang
-    Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
-    
-    // Route untuk menambah produk ke keranjang
-    Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
-    
-    // Route untuk melanjutkan checkout
-    Route::post('/checkout', [KeranjangController::class, 'checkout'])->name('keranjang.checkout');
-});
+// keranjang //
+Route::get('/keranjang', [CartController::class, 'show'])->name('keranjang');
+// Handle Order Submission
+Route::post('/keranjang/pesan', [CartController::class, 'order'])->name('cart.order');
+Route::post('/keranjang/remove/{index}', [CartController::class, 'remove'])->name('cart.remove');
 
 // profil //
 

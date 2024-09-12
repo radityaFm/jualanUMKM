@@ -2,7 +2,7 @@
 @section('content')
     <style>
         body {
-            background-image: url('assets/japon.jpg');
+            background-image: url('image/japon.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -139,8 +139,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if($message = Session::get('failed'))
-    <script>
-        Swal.fire('{{ $message  }}');
-    </script>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Password Salah',
+                text: 'Periksa kembali password yang anda masukkan.',
+                confirmButtonText: 'OK'
+            });
+        </script>
     @endif
 @endsection

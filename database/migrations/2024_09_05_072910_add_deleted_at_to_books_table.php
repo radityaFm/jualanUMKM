@@ -9,15 +9,18 @@ class AddDeletedAtToBooksTable extends Migration
 {
     public function up()
     {
-    Schema::table('books', function (Blueprint $table) {
-        $table->softDeletes(); // This will add the 'deleted_at' column for soft deletes
-    });
-}
+        Schema::table('books', function (Blueprint $table) {
+            // Cek apakah kolom deleted_at belum ada
+            if (!Schema::hasColumn('books', 'deleted_at')) {
+                $table->softDeletes(); // Menambahkan soft deletes
+            }
+        });
+    }
 
-public function down()
-{
-    Schema::table('books', function (Blueprint $table) {
-        $table->dropSoftDeletes(); // This will remove the 'deleted_at' column
-    });
-}
+    public function down()
+    {
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropSoftDeletes(); // Menghapus soft deletes jika rollback
+        });
+    }
 }
