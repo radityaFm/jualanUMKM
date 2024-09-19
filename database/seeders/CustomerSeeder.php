@@ -14,10 +14,5 @@ class CustomerSeeder extends Seeder
             'email' => 'john.doe@example.com',
             'phone' => '1234567890',
         ]);
-        Customer::create([
-            'name' => 'user',
-            'email' => 'user@example.com',
-            'phone' => '0987654321',
-        ]);
     }
 }
